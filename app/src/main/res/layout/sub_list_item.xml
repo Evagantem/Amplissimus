@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="3dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:elevation="10dp"
+    app:cardBackgroundColor="#FF7813"
+    android:clickable="true"
+    android:focusable="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp">
+
+        <LinearLayout
+            android:id="@+id/lin_l_item_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="50dp"
+            android:minHeight="40dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/item_hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:text="Hours"
+                android:textSize="20dp"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_subject_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_toEndOf="@+id/lin_l_item_hours"
+            android:text="Subject - Teacher"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/item_subst_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_subject_teacher"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/lin_l_item_hours"
+            android:text="Substituting Teacher"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

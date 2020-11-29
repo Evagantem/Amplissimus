@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Amplissimus</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="main_activity_title">LoggedInView</string>
+    <string name="prompt_email">Nutzername</string>
+    <string name="prompt_password">Passwort</string>
+    <string name="action_sign_in">Anmelden</string>
+    <string name="field_empty">"Feld ist leer!"</string>
+    <string name="login_failed">"Login fehlgeschlagen!"</string>
+    <string name="save_login_data">Anmeldedaten speichern?</string>
+
+    <string name="cancel">Abbrechen</string>
+    <string name="save">Speichern</string>
+
+    <string name="settings">Einstellungen</string>
+    <string name="subs">Vertretungen</string>
+
+    <string name="subst_by">"Vertreten durch"</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Personalisierung</string>
+
+    <string name="undefined">Nicht definiert</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Deine Klasse</string>
+    <string name="background_services_title">Hintergrunddienste</string>
+    <string name="background_services_summary">
+        Benachrichtigt dich, sobald es etwas Neues für dich gibt.
+    </string>
+
+    <string name="about">Über</string>
+    <string name="version">Version</string>
+
+    <string name="dev_options">Entwickleroptionen</string>
+    <string name="dev_options_summary">Erweiterte Funktionen</string>
+    <string name="date">Datum</string>
+    <string name="subject">Fach</string>
+    <string name="demo_text">TextView</string>
+    <string name="affected_class">Betroffene Schülergruppe</string>
+    <string name="teacher">Lehrer</string>
+    <string name="substitution">Vertretung</string>
+    <string name="school_icon">school icon</string>
+    <string name="connection_failed">Internetverbindung fehlgeschlagen!</string>
+    <string name="notes">Bemerkung</string>
+</resources>

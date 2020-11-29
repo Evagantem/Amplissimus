@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_login_data"
+        android:textSize="18dp"
+        android:layout_marginBottom="16dp"/>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:stretchColumns="0, 1"
+        android:weightSum="100">
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:backgroundTint="#9F0000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:layout_gravity="left"
+            android:layout_weight="50"
+            android:layout_marginRight="32dp"/>
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/save"
+            android:layout_weight="50"
+            android:layout_marginLeft="32dp"/>
+
+    </TableRow>
+
+
+
+
+</LinearLayout>
