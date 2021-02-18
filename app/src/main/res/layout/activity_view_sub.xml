@@ -15,6 +15,7 @@
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="@color/white"
+        android:id="@+id/view_sub_title"
         app:layout_constraintBottom_toTopOf="@+id/root_card_view"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -82,8 +83,6 @@
                 android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
-
 
             <View
                 android:layout_width="match_parent"

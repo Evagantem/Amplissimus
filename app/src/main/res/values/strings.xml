@@ -51,4 +51,14 @@
     <string name="school_icon">school icon</string>
     <string name="connection_failed">Internetverbindung fehlgeschlagen!</string>
     <string name="notes">Bemerkung</string>
+    <string name="new_subs">Neue Vertetungen</string>
+    <string name="logout_summary">Befördert dich zum Login-Bildschirm.</string>
+    <string name="logout_title">Abmelden</string>
+    <string name="others">Sonstiges</string>
+    <string name="new_subs_notification_desc">Benachrichtigt dich bei neuen Vertretungen.</string>
+    <string name="no_subs">Keine Vertretungen</string>
+    <string name="grade">Jahrgangsstufe</string>
+    <string name="grade_preference_desc">Durch das Festsetzen deiner Jahrgangsstufe ist es möglich, die Vertretungspläne zu filtern.</string>
+    <string name="filter_plans_desc">Filtert die Vertretungspläne nach deiner angegebenen Jahrgangsstufe.</string>
+    <string name="filter_plans">Vertretungspläne filtern</string>
 </resources>

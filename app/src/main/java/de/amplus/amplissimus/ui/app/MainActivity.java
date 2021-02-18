@@ -10,6 +10,7 @@ import android.util.Log;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -54,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
         ((TabLayout) findViewById(R.id.tab_layout)).setupWithViewPager(viewPager);
     }
 
+    public void updatePlansList() {
+        SubsFragment subsFragment = null;
+        for (Fragment f : getSupportFragmentManager().getFragments()) {
+            if (f instanceof  SubsFragment) subsFragment = (SubsFragment) f;
+        }
+        if (subsFragment != null) {
+            subsFragment.updateRecyclerView();
+        }
+    }
+
     private void startScheduledJob() {
         JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         if(scheduler.getAllPendingJobs().size() > 0) {
@@ -65,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         }
         ComponentName componentName = new ComponentName(this, DSBFetchingJobService.class);
         JobInfo jobInfo = new JobInfo.Builder(42, componentName)
-                .setPeriodic(30 * 60 * 1000)
+                .setPeriodic(15 * 60 * 1000)
                 .setPersisted(true)
                 .build();
         int resCode = scheduler.schedule(jobInfo);

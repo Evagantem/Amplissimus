@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import de.amplus.amplissimus.ui.app.SettingsFragment;
 import de.sematre.dsbmobile.utils.GZIP;
 
 public class Prefs {
@@ -32,12 +33,26 @@ public class Prefs {
         defaultPreferences = PreferenceManager.getDefaultSharedPreferences(service);
     }
 
+    public Prefs(@NotNull Context context) {
+        authPreferences = context.getSharedPreferences("auth", Context.MODE_PRIVATE);
+        cachePreferences = context.getSharedPreferences("cache", Context.MODE_PRIVATE);
+        defaultPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    }
+
     SharedPreferences authPreferences;
     SharedPreferences cachePreferences;
     SharedPreferences defaultPreferences;
 
     public boolean bgServicesOn() {
         return defaultPreferences.getBoolean("background_services", false);
+    }
+
+    public String getGradeValue() {
+        return defaultPreferences.getString(SettingsFragment.GRADE, "");
+    }
+
+    public boolean filterPlans() {
+        return defaultPreferences.getBoolean(SettingsFragment.FILTER_PLANS, false);
     }
 
     public void setUsername(String s) {
@@ -56,6 +71,8 @@ public class Prefs {
         return authPreferences.getString("password", null);
     }
 
+    public boolean hasCredentials() { return getUsername() != null && getPassword() != null; }
+
     public void clear() {
         authPreferences.edit().clear().apply();
     }
@@ -63,12 +80,12 @@ public class Prefs {
     public List<DSBService.Plan> getPlans() {
         if(cachePreferences.getString("plans", null) == null) return null;
         try {
-            String parseableString = GZIP.decompress(Base64.decode(
+            String parsableString = GZIP.decompress(Base64.decode(
                     cachePreferences.getString("plans", null),
                     Base64.DEFAULT
             ));
             DSBService.Plan[] plans = new Gson().fromJson(
-                    parseableString,
+                    parsableString,
                     DSBService.Plan[].class
             );
             return Arrays.asList(plans);

@@ -16,16 +16,13 @@ import de.amplus.amplissimus.services.DSBService;
 
 public class ViewSubActivity extends AppCompatActivity {
 
-    private DSBService.Substitution sub;
-    private ConstraintLayout constraintLayout;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_sub);
-        sub = new Gson()
+        DSBService.Substitution sub = new Gson()
                 .fromJson(getIntent().getStringExtra("sub"), DSBService.Substitution.class);
-        constraintLayout = findViewById(R.id.view_subs_constraint_layout);
+        ConstraintLayout constraintLayout = findViewById(R.id.view_subs_constraint_layout);
         if(sub.isFree()) {
             constraintLayout.setBackgroundColor(Color.rgb(0, 155, 3));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
@@ -35,6 +32,7 @@ public class ViewSubActivity extends AppCompatActivity {
                 getWindow().setStatusBarColor(Color.rgb(255, 136, 47));
         }
 
+        ((TextView)findViewById(R.id.view_sub_title)).setText(String.format("%s %s %s", sub.getHours(), sub.getSubject(), sub.getAffectedClass()));
         ((TextView)findViewById(R.id.affected_class)).setText(sub.getAffectedClass());
         ((TextView)findViewById(R.id.subject)).setText(sub.getSubject());
         ((TextView)findViewById(R.id.orig_teacher)).setText(sub.getOrigTeacher());

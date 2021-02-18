@@ -7,6 +7,24 @@
             app:title="@string/background_services_title"
             app:summary="@string/background_services_summary"/>
 
+        <EditTextPreference
+            app:key="grade"
+            app:title="@string/grade"
+            app:summary="@string/grade_preference_desc" />
+
+        <SwitchPreferenceCompat
+            app:key="filter_plans"
+            app:title="@string/filter_plans"
+            app:summary="@string/filter_plans_desc"
+            app:enabled="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/others">
+        <Preference
+            app:key="logout"
+            app:title="@string/logout_title"
+            app:summary="@string/logout_summary"/>
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/about">

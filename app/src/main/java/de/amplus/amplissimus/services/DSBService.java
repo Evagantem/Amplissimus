@@ -22,18 +22,21 @@ public class DSBService {
 
     public DSBService() throws Exception {
         if(dsbMobile == null) throw new Exception("DSBMobile not initialized!");
-    };
+    }
 
     private static DSBMobile dsbMobile;
     private static List<Plan> plans;
+    private static String filterBy;
+
+    public static void setFilter(String filter) { filterBy = filter; }
+
+    public static String getFilter() { return filterBy; }
 
     public static List<Plan> getPlans() {
         return plans;
     }
 
     public static void setPlans(List<Plan> plans) { DSBService.plans = plans; }
-
-
 
     public boolean credentialsOK() {
         Log.d("DSBService", "Checking credentials...");
@@ -43,6 +46,20 @@ public class DSBService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public static List<Plan> getFilteredPlans() {
+        if(filterBy == null) return plans;
+        List<Plan> resultPlans = new ArrayList<>();
+        for (Plan plan : plans) {
+            List<Substitution> planSubs = new ArrayList<>();
+            for (ClassSubs classSubs : plan.substitutions) {
+                if (classSubs.className.contains(filterBy))
+                    planSubs.addAll(classSubs.subs);
+            }
+            resultPlans.add(new Plan(planSubs, plan.title, plan.url));
+        }
+        return resultPlans;
     }
 
     public String htmlDecode(final String input) {
@@ -230,10 +247,10 @@ public class DSBService {
         }
 
         private final String affectedClass;
-        private String origTeacher;
+        private final String origTeacher;
         private final String newTeacher;
         private final String subject;
-        private String notes;
+        private final String notes;
         private final String hours;
 
 

@@ -9,11 +9,11 @@ import android.net.NetworkInfo;
 import com.google.android.material.snackbar.Snackbar;
 
 public class Functions {
-    public static boolean isOnline(Activity activity) {
+    public static boolean isOffline(Activity activity) {
         ConnectivityManager cm =
                 (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isConnectedOrConnecting();
+        return netInfo == null || !netInfo.isConnectedOrConnecting();
     }
 
     public static boolean isOnline(Service service) {

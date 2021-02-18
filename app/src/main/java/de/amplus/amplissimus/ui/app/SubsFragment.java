@@ -1,8 +1,7 @@
 package de.amplus.amplissimus.ui.app;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,13 +32,13 @@ public class SubsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
-            this.plans.addAll(DSBService.getPlans());
+            this.plans.addAll(DSBService.getFilteredPlans());
             if (!portableSession) new Prefs(requireActivity()).setPlans(plans);
         } catch (Exception e) {
             e.printStackTrace();
             this.plans = new ArrayList<>();
         }
-        if(!Functions.isOnline(requireActivity()))
+        if(Functions.isOffline(requireActivity()))
             Snackbar.make(
                     requireActivity().findViewById(android.R.id.content),
                     getString(R.string.connection_failed),
@@ -63,7 +62,7 @@ public class SubsFragment extends Fragment {
     }
 
     private void updatePlans() {
-        if(!Functions.isOnline(requireActivity())) {
+        if(Functions.isOffline(requireActivity())) {
             swipeRefreshLayout.setRefreshing(false);
             Functions.makeSnackbar(
                     requireActivity(),
@@ -75,8 +74,7 @@ public class SubsFragment extends Fragment {
                 try {
                     List<DSBService.Plan> plans = new DSBService().parseTimetables();
                     if(!portableSession) new Prefs(requireActivity()).setPlans(plans);
-                    this.plans.clear();
-                    this.plans.addAll(plans);
+                    DSBService.setPlans(plans);
                 } catch (Exception e) {
                     e.printStackTrace();
                     Functions.makeSnackbar(
@@ -93,6 +91,8 @@ public class SubsFragment extends Fragment {
     }
 
     public void updateRecyclerView() {
+        plans.clear();
+        plans.addAll(DSBService.getFilteredPlans());
         if(recyclerView.getAdapter() == null) return;
         recyclerView.getAdapter().notifyDataSetChanged();
         recyclerView.getAdapter().notifyItemChanged(0);

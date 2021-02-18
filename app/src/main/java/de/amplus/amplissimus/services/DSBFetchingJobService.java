@@ -100,7 +100,7 @@ public class DSBFetchingJobService extends JobService {
         Notification notification = new NotificationCompat.Builder(
                 this,
                 App.NEW_SUBS_CHANNEL_ID
-        ).setContentTitle("Neue Vertetungen")
+        ).setContentTitle(getString(R.string.new_subs))
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setCategory(NotificationCompat.CATEGORY_EVENT)

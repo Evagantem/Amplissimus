@@ -1,6 +1,10 @@
 package de.amplus.amplissimus.ui.login;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.Editable;
@@ -14,6 +18,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.List;
 
@@ -36,6 +41,16 @@ public class LoginActivity extends AppCompatActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getIntent().getBooleanExtra("redirect", true)) {
+            try {
+                if(DSBService.getPlans() != null) {
+                    startActivity(new Intent(this, MainActivity.class));
+                    finish();
+                }
+            } catch(Exception ignored) {}
+        }
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -56,7 +71,7 @@ public class LoginActivity extends AppCompatActivity
 
                 if(plans != null && prefs.getUsername().equals(username)
                         && prefs.getPassword().equals(password)
-                        && !Functions.isOnline(this)) {
+                        && Functions.isOffline(this)) {
                     portable = false;
                     new DSBService(username, password);
                     DSBService.setPlans(plans);
